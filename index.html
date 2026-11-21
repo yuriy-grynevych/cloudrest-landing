@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CloudRest Travel Pillow</title>
+<meta name="description" content="CloudRest — the U-shaped memory-foam travel pillow that stops neck pain before it starts. Shop now, 30-day money-back guarantee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f6fc;
+    --surface:#ffffff;
+    --surface-2:#e7eefb;
+    --text:#10172a;
+    --text-muted:#54617c;
+    --accent:#ff6f4d;
+    --accent-ink:#7a2c15;
+    --accent-2:#3e6fe0;
+    --border:#d8e1f3;
+    --shadow:0 20px 50px -25px rgba(16,23,42,0.35);
+    --font-display:'Space Grotesk',Arial,sans-serif;
+    --font-body:'Inter',Arial,sans-serif;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0a0f1c;--surface:#121a2c;--surface-2:#1a2540;--text:#eaf0fb;--text-muted:#9bacc9;
+      --accent:#ff8667;--accent-ink:#2a0d04;--accent-2:#7fa2ff;--border:#283357;
+      --shadow:0 20px 50px -25px rgba(0,0,0,0.6);color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0a0f1c;--surface:#121a2c;--surface-2:#1a2540;--text:#eaf0fb;--text-muted:#9bacc9;
+    --accent:#ff8667;--accent-ink:#2a0d04;--accent-2:#7fa2ff;--border:#283357;
+    --shadow:0 20px 50px -25px rgba(0,0,0,0.6);color-scheme:dark;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  img,svg{max-width:100%;}
+  h1,h2,h3,h4{font-family:var(--font-display);line-height:1.12;text-wrap:balance;margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+  ::selection{background:var(--accent);color:#fff;}
+  .wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);}
+  .eyebrow::before{content:"";width:18px;height:2px;background:var(--accent-2);border-radius:2px;}
+  .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;padding-block:14px;background:transparent;transition:background-color .35s ease, box-shadow .35s ease, border-color .35s ease;border-bottom:1px solid transparent;}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:var(--bg);}
+  .nav.scrolled{background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .logo{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:19px;}
+  .logo-mark{width:26px;height:26px;flex:0 0 auto;}
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-actions{display:flex;align-items:center;gap:10px;}
+  .menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:10px;width:40px;height:40px;cursor:pointer;color:var(--text);}
+  .mobile-panel{display:none;}
+  .btn{font-family:var(--font-body);font-weight:600;font-size:14.5px;border-radius:999px;padding:11px 22px;border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;white-space:nowrap;}
+  .btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;}
+  .btn-primary{background:var(--accent);color:#2a0d04;box-shadow:0 10px 24px -10px color-mix(in srgb, var(--accent) 70%, transparent);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px color-mix(in srgb, var(--accent) 75%, transparent);}
+  .btn-ghost{background:transparent;border-color:var(--border);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);}
+  .btn-sm{padding:8px 16px;font-size:13.5px;}
+  .hero{position:relative;padding-block:56px 70px;overflow:hidden;}
+  .cloud-field{position:absolute;inset:-10% -10% auto -10%;height:120%;z-index:0;pointer-events:none;}
+  .cloud{position:absolute;border-radius:50%;filter:blur(30px);opacity:.55;}
+  .cloud.c1{width:280px;height:160px;background:var(--surface-2);top:4%;left:2%;animation:driftA 22s ease-in-out infinite;}
+  .cloud.c2{width:220px;height:130px;background:var(--surface-2);top:40%;right:4%;animation:driftB 26s ease-in-out infinite;}
+  .cloud.c3{width:180px;height:110px;background:color-mix(in srgb, var(--accent-2) 25%, var(--surface-2));bottom:2%;left:30%;animation:driftA 30s ease-in-out infinite reverse;}
+  @keyframes driftA{0%,100%{transform:translate(0,0);}50%{transform:translate(26px,16px);}}
+  @keyframes driftB{0%,100%{transform:translate(0,0);}50%{transform:translate(-30px,20px);}}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
+  .hero-copy h1{font-size:clamp(34px,5vw,56px);margin-block:16px 18px;}
+  .hero-copy h1 .accent{color:var(--accent);}
+  .hero-sub{font-size:17px;color:var(--text-muted);max-width:50ch;margin-bottom:28px;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:26px;}
+  .trust-row{display:flex;flex-wrap:wrap;gap:18px;font-size:13.5px;color:var(--text-muted);}
+  .trust-row span{display:flex;align-items:center;gap:7px;}
+  .trust-row svg{width:16px;height:16px;flex:0 0 auto;color:var(--accent-2);}
+  .hero-art{position:relative;display:flex;align-items:center;justify-content:center;}
+  .pillow-wrap{animation:bob 5s ease-in-out infinite;}
+  @media (prefers-reduced-motion:reduce){ .pillow-wrap,.cloud{animation:none !important;} }
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-14px) rotate(2deg);}}
+  .price-chip{position:absolute;top:6%;right:2%;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:10px 14px;box-shadow:var(--shadow);font-family:var(--font-display);font-weight:700;text-align:center;}
+  .price-chip small{display:block;font-family:var(--font-body);font-weight:500;font-size:10.5px;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;}
+  .fold-chip{position:absolute;bottom:4%;left:0;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:10px 14px;box-shadow:var(--shadow);font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:8px;}
+  .fold-chip svg{width:18px;height:18px;color:var(--accent);}
+  .stats-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .stat{text-align:center;padding:26px 12px;border-right:1px solid var(--border);}
+  .stat:last-child{border-right:none;}
+  .stat-num{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3vw,32px);color:var(--accent-2);font-variant-numeric:tabular-nums;}
+  .stat-label{font-size:12.5px;color:var(--text-muted);margin-top:4px;}
+  section{padding-block:76px;}
+  .section-head{max-width:640px;margin-bottom:42px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px);margin-top:14px;}
+  .section-head p{color:var(--text-muted);margin-top:12px;font-size:16px;}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){ .reveal{transition:none;opacity:1;transform:none;} }
+  .problem{background:var(--surface-2);}
+  .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;}
+  .ache-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;box-shadow:var(--shadow);}
+  .ache-row{display:flex;gap:14px;align-items:flex-start;padding-block:12px;border-bottom:1px dashed var(--border);}
+  .ache-row:last-child{border-bottom:none;}
+  .ache-row svg{width:20px;height:20px;flex:0 0 auto;color:var(--accent);margin-top:2px;}
+  .ache-row strong{font-family:var(--font-display);font-size:15px;}
+  .ache-row span{display:block;color:var(--text-muted);font-size:14px;margin-top:2px;}
+  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px 20px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+  .feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--accent-2);}
+  .feature-icon{width:42px;height:42px;border-radius:12px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--accent-2);}
+  .feature-icon svg{width:22px;height:22px;}
+  .feature-card h3{font-size:16.5px;margin-bottom:8px;}
+  .feature-card p{font-size:14px;color:var(--text-muted);}
+  .audience{background:var(--surface-2);}
+  .audience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .audience-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;}
+  .audience-card .emoji-icon{width:36px;height:36px;margin:0 auto 10px;color:var(--accent);}
+  .audience-card h4{font-size:14.5px;}
+  .benefit-banner{background:linear-gradient(135deg, var(--accent-2), color-mix(in srgb, var(--accent-2) 60%, var(--accent)));border-radius:28px;padding:48px clamp(22px,5vw,56px);color:#fff;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;}
+  .benefit-banner h2{font-size:clamp(24px,3vw,32px);color:#fff;}
+  .benefit-banner p{color:rgba(255,255,255,.88);margin-top:14px;font-size:16px;max-width:52ch;}
+  .benefit-quote{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:18px;padding:22px;font-family:var(--font-display);font-size:18px;font-weight:600;}
+  .price-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:stretch;}
+  .price-card{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:34px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+  .price-card::after{content:"";position:absolute;top:-60px;right:-60px;width:160px;height:160px;border-radius:50%;background:color-mix(in srgb, var(--accent) 18%, transparent);}
+  .price-top{display:flex;align-items:baseline;gap:6px;position:relative;}
+  .price-top .amount{font-family:var(--font-display);font-size:56px;font-weight:700;}
+  .price-top .per{color:var(--text-muted);font-size:15px;}
+  .price-list{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;position:relative;}
+  .price-list li{display:flex;gap:10px;font-size:14.5px;}
+  .price-list svg{width:18px;height:18px;flex:0 0 auto;color:var(--accent-2);margin-top:1px;}
+  .partner-card{background:var(--surface-2);border:1px solid var(--border);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:16px;}
+  .partner-row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14.5px;padding-block:10px;border-bottom:1px solid var(--border);}
+  .partner-row:last-of-type{border-bottom:none;}
+  .partner-row b{font-family:var(--font-display);color:var(--accent-2);white-space:nowrap;}
+  .faq-list{display:flex;flex-direction:column;gap:12px;max-width:760px;}
+  .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:16px;display:grid;grid-template-rows:auto 0fr;transition:grid-template-rows .35s ease;}
+  .faq-item.open{grid-template-rows:auto 1fr;border-color:var(--accent-2);}
+  .faq-q{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;font-family:var(--font-display);font-weight:600;font-size:15.5px;}
+  .faq-q .plus{width:22px;height:22px;flex:0 0 auto;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:transform .3s ease, background-color .3s;font-size:15px;color:var(--accent-2);}
+  .faq-item.open .faq-q .plus{transform:rotate(135deg);background:var(--surface-2);}
+  .faq-a-inner{overflow:hidden;}
+  .faq-a-inner p{padding:0 20px 20px;color:var(--text-muted);font-size:14.5px;max-width:65ch;}
+  .campaign{background:var(--surface-2);}
+  .campaign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .campaign-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
+  .campaign-card .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:4px 10px;border-radius:999px;margin-bottom:12px;}
+  .campaign-card h3{font-size:16px;margin-bottom:6px;}
+  .campaign-card p{font-size:14px;color:var(--text-muted);}
+  .channel-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .channel-pill{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;}
+  .channel-pill svg{width:16px;height:16px;color:var(--accent-2);}
+  .final-cta{background:var(--text);color:var(--bg);border-radius:28px;padding:56px clamp(22px,6vw,64px);text-align:center;position:relative;overflow:hidden;}
+  .final-cta h2{color:inherit;font-size:clamp(28px,4vw,42px);}
+  .final-cta p{color:color-mix(in srgb, var(--bg) 70%, transparent);margin:14px auto 28px;max-width:50ch;font-size:16px;}
+  .final-cta .btn-primary{font-size:16px;padding:14px 30px;}
+  .final-badges{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:13px;color:color-mix(in srgb, var(--bg) 65%, transparent);}
+  .final-badges span{display:flex;align-items:center;gap:6px;}
+  .final-badges svg{width:15px;height:15px;color:var(--accent);}
+  footer{padding-block:34px;border-top:1px solid var(--border);}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-muted);}
+  .footer-brand{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;color:var(--text);}
+  .footer-brand svg{width:18px;height:18px;}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:360px;margin:0 auto;}
+    .problem-grid{grid-template-columns:1fr;}
+    .feature-grid{grid-template-columns:repeat(2,1fr);}
+    .audience-grid{grid-template-columns:repeat(2,1fr);}
+    .benefit-banner{grid-template-columns:1fr;}
+    .price-grid{grid-template-columns:1fr;}
+    .campaign-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .stat{border-right:none;border-bottom:1px solid var(--border);}
+  }
+  @media (max-width:720px){
+    .nav-links{display:none;}
+    .menu-btn{display:flex;align-items:center;justify-content:center;}
+    .mobile-panel{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--border);padding:14px max(16px, env(safe-area-inset-left,0px));}
+    .mobile-panel.open{display:flex;flex-direction:column;gap:14px;}
+    .mobile-panel a{text-decoration:none;color:var(--text);font-weight:500;font-size:15px;}
+    .nav{position:sticky;}
+  }
+  @media (max-width:520px){
+    .feature-grid{grid-template-columns:1fr;}
+    .audience-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-row" style="position:relative;">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 26C8 36 16 40 24 40C32 40 40 36 40 26" stroke="currentColor" stroke-width="7" stroke-linecap="round" style="color:var(--accent-2)"/>
+      </svg>
+      CloudRest
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#campaign">Campaign</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#pricing" class="btn btn-primary btn-sm">Get CloudRest</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#campaign">Campaign</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="cloud-field" aria-hidden="true">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+  </div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Memory-foam travel pillow</span>
+      <h1>Sleep like you're home,<br>even at <span class="accent">30,000 feet.</span></h1>
+      <p class="hero-sub">CloudRest is the U-shaped memory-foam pillow that stops the neck stiffness and headaches caused by sleeping upright in a car, train, or plane seat. Pack it small. Arrive rested.</p>
+      <div class="hero-ctas">
+        <a href="#pricing" class="btn btn-primary">Get CloudRest — $25</a>
+        <a href="#features" class="btn btn-ghost">See how it folds ↓</a>
+      </div>
+      <div class="trust-row">
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.6 6.5L21 9l-5 4.3L17.5 21 12 17.3 6.5 21 8 13.3 3 9l6.4-.5L12 2z" fill="currentColor"/></svg>30-day money-back guarantee</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Machine-washable cover</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg class="pillow-wrap" width="300" height="260" viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="235" rx="110" ry="14" fill="var(--surface-2)"/>
+        <path d="M70 60 C70 160 95 210 150 210 C205 210 230 160 230 60" stroke="var(--accent-2)" stroke-width="56" stroke-linecap="round"/>
+        <path d="M70 60 C70 160 95 210 150 210 C205 210 230 160 230 60" stroke="#ffffff" stroke-opacity="0.18" stroke-width="56" stroke-linecap="round" stroke-dasharray="4 26"/>
+      </svg>
+      <div class="price-chip">$25<small>per pillow</small></div>
+      <div class="fold-chip">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Folds to 60% smaller
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stats-bar">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="stat-num" data-count="25" data-prefix="$">0</div><div class="stat-label">Per pillow</div></div>
+    <div class="stat"><div class="stat-num" data-count="60" data-suffix="%">0</div><div class="stat-label">Smaller when folded</div></div>
+    <div class="stat"><div class="stat-num" data-count="30" data-suffix=" days">0</div><div class="stat-label">Money-back guarantee</div></div>
+    <div class="stat"><div class="stat-num" data-count="15" data-suffix="%">0</div><div class="stat-label">Off bulk orders</div></div>
+  </div>
+</div>
+
+<section class="problem">
+  <div class="wrap problem-grid">
+    <div class="reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Your seat was never built for your neck.</h2>
+      <p style="color:var(--text-muted);margin-top:14px;font-size:16px;max-width:48ch;">Sleeping upright on a train, plane, or car causes real muscle strain. A cheap inflatable pillow flattens in minutes and gives your neck nothing to lean on — so you land with a stiff neck and a headache instead of a rested start to your trip.</p>
+    </div>
+    <div class="ache-card reveal">
+      <div class="ache-row">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Neck stiffness</strong><span>No support means your head drops the moment you doze off.</span></div>
+      </div>
+      <div class="ache-row">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Tension headaches</strong><span>Hours of strain on the same muscles follow you off the plane.</span></div>
+      </div>
+      <div class="ache-row">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Pillows that quit early</strong><span>Inflatable ones cost less, but they break quickly and give zero real support.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What's inside</span>
+      <h2>Four details that make it worth keeping.</h2>
+      <p>CloudRest isn't just foam in a U-shape — every part of it solves a specific travel problem.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18v-6a8 8 0 0116 0v6M4 18a2 2 0 002 2h1a1 1 0 001-1v-3a1 1 0 00-1-1H4m16 5a2 2 0 01-2-2h-1a1 1 0 01-1-1v-3a1 1 0 011-1h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Adaptive memory foam</h3>
+        <p>High-density foam shapes itself to your neck, so the support is personal, not generic.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M5 12a2 2 0 100-4 2 2 0 000 4zM19 12a2 2 0 100 4 2 2 0 000-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Adjustable front strap</h3>
+        <p>Cinch it to your exact fit — no gaps, no slipping while you sleep.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 7l1 13h14l1-13M9 11v5M15 11v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Washable, breathable cover</h3>
+        <p>The soft grey cover zips off and goes straight into a regular washing machine after every trip.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Packs down 60%</h3>
+        <p>Rolls into a waterproof pouch smaller than an apple, with a clip for any bag handle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Built for</span>
+      <h2>Anyone who sleeps somewhere that isn't a bed.</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <svg class="emoji-icon" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <h4>Daily commuters</h4>
+      </div>
+      <div class="audience-card reveal">
+        <svg class="emoji-icon" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Tourists</h4>
+      </div>
+      <div class="audience-card reveal">
+        <svg class="emoji-icon" viewBox="0 0 24 24" fill="none"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Students heading home</h4>
+      </div>
+      <div class="audience-card reveal">
+        <svg class="emoji-icon" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l8-4v18M13 21V11l6 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Business travellers</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="benefit-banner reveal">
+      <div>
+        <span class="eyebrow" style="color:#fff;">The benefit</span>
+        <h2>We don't just sell a pillow. We sell the benefit of pain-free travel.</h2>
+        <p>Frequent travellers aren't buying foam — they're buying what it does for them: stepping off the plane feeling rested and refreshed instead of tired and sore.</p>
+      </div>
+      <div class="benefit-quote">"Arrive like you slept in your own bed."</div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>One price. No gimmicks.</h2>
+      <p>Affordable enough for regular travellers, built to outlast every cheap inflatable pillow sold at an airport kiosk.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <div class="price-top"><span class="amount">$25</span><span class="per">per pillow</span></div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Premium, durable foam that keeps its shape — buy once, use for years</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Higher quality than cheap inflatable airport pillows</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>30-day money-back guarantee, no questions asked</li>
+        </ul>
+        <a href="#faq" class="btn btn-primary" style="margin-top:26px;">Get CloudRest — $25</a>
+      </div>
+      <div class="partner-card reveal">
+        <h3 style="font-size:17px;">For groups &amp; partners</h3>
+        <div class="partner-row"><span>Two-pack, couples &amp; families</span><b>Open to negotiate</b></div>
+        <div class="partner-row"><span>Travel agencies &amp; student groups (bulk)</span><b>15% off</b></div>
+        <div class="partner-row"><span>Seasonal travel sales</span><b>Down to $20</b></div>
+        <div class="partner-row"><span>Retail partners seeking a lower price</span><b>Free eye-mask bundle instead</b></div>
+        <p style="font-size:13px;color:var(--text-muted);">We stay firm on single-purchase pricing — the value is in the foam, not a discount.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Still not sure?</span>
+      <h2>The questions every traveller asks.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>"It takes up too much space in my carry-on."</span><span class="plus">+</span></button>
+        <div class="faq-a-inner"><p>It compresses into a pouch smaller than an apple, and the pouch clips onto the outside of any backpack handle — it never has to go inside your bag at all.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>"Pillows get dirty fast when you travel."</span><span class="plus">+</span></button>
+        <div class="faq-a-inner"><p>The cover zips off in seconds and goes straight into a regular washing machine after every trip. Clean before every departure, every time.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>"Won't memory foam make me sweat?"</span><span class="plus">+</span></button>
+        <div class="faq-a-inner"><p>CloudRest uses a breathable fabric with ventilation channels built into the foam itself, so your neck stays cool even on a warm cabin or a crowded train.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>"Isn't $25 too expensive for a pillow?"</span><span class="plus">+</span></button>
+        <div class="faq-a-inner"><p>Cheap inflatable pillows cost less upfront, but they break quickly and give zero neck support — this is a long-term investment in your health, not a disposable extra. And if it's not right for you, it's covered by our 30-day money-back guarantee.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="campaign" class="campaign">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How people find us</span>
+      <h2>The Long Haul Comfort Challenge.</h2>
+      <p>Travellers look for travel tips on social media and shop for comfort items right before departure — so that's exactly where CloudRest shows up.</p>
+    </div>
+    <div class="campaign-grid">
+      <div class="campaign-card reveal">
+        <span class="tag">Video</span>
+        <h3>Pack-and-unfold clips</h3>
+        <p>Short videos showing exactly how easily CloudRest packs into its pouch — satisfying, fast, shareable.</p>
+      </div>
+      <div class="campaign-card reveal">
+        <span class="tag">Comparison</span>
+        <h3>Flat vs. CloudRest</h3>
+        <p>Side-by-side comparisons against flat airport pillows, so the difference in support is impossible to miss.</p>
+      </div>
+      <div class="campaign-card reveal">
+        <span class="tag">Challenge</span>
+        <h3>Free rides, real feedback</h3>
+        <p>We hand CloudRest to passengers on a long bus line for free, then share their honest before-and-after impressions.</p>
+      </div>
+    </div>
+    <div class="channel-row reveal">
+      <div class="channel-pill"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18V6l10 6-10 6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>TikTok &amp; Instagram</div>
+      <div class="channel-pill"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21V9l9-6 9 6v12M9 21v-6h6v6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Train-station retail displays</div>
+      <div class="channel-pill"><svg viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Airport convenience stores</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final-cta reveal">
+      <span class="eyebrow" style="color:var(--accent);">Ready when you are</span>
+      <h2>Stop arriving tired. Start arriving rested.</h2>
+      <p>One pillow, built to last, with a 30-day money-back guarantee — so trying it costs you nothing but a better trip.</p>
+      <a href="#pricing" class="btn btn-primary">Get CloudRest — $25</a>
+      <div class="final-badges">
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>30-day guarantee</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Machine-washable</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Folds to 60% smaller</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M8 26C8 36 16 40 24 40C32 40 40 36 40 26" stroke="currentColor" stroke-width="7" stroke-linecap="round" style="color:var(--accent-2)"/></svg>
+      CloudRest
+    </div>
+    <span>The travel pillow for anyone who refuses to arrive exhausted.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 12); };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var menuBtn = document.getElementById('menuBtn');
+  var panel = document.getElementById('mobilePanel');
+  menuBtn.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    });
+  });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  var counters = document.querySelectorAll('.stat-num');
+  var animateCount = function(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    if(reduceMotion){ el.textContent = prefix + target + suffix; return; }
+    var start = 0;
+    var duration = 1100;
+    var startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.round(start + (target - start) * eased);
+      el.textContent = prefix + current + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  };
+  if('IntersectionObserver' in window){
+    var countIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          countIo.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.4});
+    counters.forEach(function(el){ countIo.observe(el); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(other){
+        if(other !== item) other.classList.remove('open');
+      });
+      item.classList.toggle('open', !isOpen);
+    });
+  });
+})();
+</script>
+</body>
+</html>
